@@ -5,8 +5,9 @@ import com.jomartinez.memorymatchinggame.utils.DEFAULT_ICONS
 class MemoryGame(private val boardSize: BoardSize){
 
     val cards: List<MemoryCard>
-    private var numberPairsFound = 0
+    var numberPairsFound = 0
 
+    private var numberOfFlips = 0
     private var indexOfSingleSelectedCard: Int? = null
 
     init {
@@ -17,6 +18,7 @@ class MemoryGame(private val boardSize: BoardSize){
 
     fun flipCard(position: Int): Boolean {
 
+        numberOfFlips++
         val card = cards[position]
         var foundMatch = false
 
@@ -55,5 +57,9 @@ class MemoryGame(private val boardSize: BoardSize){
 
     fun isCardFaceUp(position: Int): Boolean {
         return cards[position].isFacedUp
+    }
+
+    fun getNumberMoves(): Int {
+        return numberOfFlips / 2
     }
 }
