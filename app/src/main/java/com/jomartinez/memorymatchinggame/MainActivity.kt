@@ -4,7 +4,11 @@ import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,12 +37,39 @@ class MainActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         clMain = findViewById(R.id.main_constraint_layout)
         rvBoard = findViewById(R.id.recycler_view_board)
         tvNumberMoves = findViewById(R.id.text_view_number_moves)
         tvNumberPairs = findViewById(R.id.text_view_number_pairs)
 
+        setupBoard()
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.top_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection.
+        return when (item.itemId) {
+            R.id.refresh -> {
+                Log.i(TAG, "Refresh, on Options Item Selected")
+                setupBoard()
+                true
+            }
+            R.id.more -> {
+                Toast.makeText(this, "More", Toast.LENGTH_SHORT ).show()
+                true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setupBoard() {
         memoryGame = MemoryGame(boardSize)
 
         adapter = MemoryBoardAdapter(
@@ -74,4 +105,5 @@ class MainActivity : AppCompatActivity() {
         tvNumberMoves.text = "Moves: ${memoryGame.getNumberMoves()}"
         adapter.notifyDataSetChanged()
     }
+
 }
