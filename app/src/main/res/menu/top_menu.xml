@@ -2,18 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/more"
-        android:icon="@drawable/ic_more_vert_24"
-        android:title="More"
-        android:contentDescription="more_content"
-        app:showAsAction="withText" />
-    <item
-        android:id="@+id/refresh"
-        android:title="Refresh"
-        android:contentDescription="refresh"/>
 <!--    <item-->
-<!--        android:id="@+id/about"-->
-<!--        android:title="About"-->
-<!--        android:contentDescription="about"/>-->
+<!--        android:id="@+id/more"-->
+<!--        android:icon="@drawable/ic_more_vert_24"-->
+<!--        android:title="More"-->
+<!--        android:contentDescription="more_content"-->
+<!--        app:showAsAction="withText" />-->
+    <item
+        android:id="@+id/mi_refresh"
+        android:title="Refresh"
+        android:contentDescription="refresh"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/mi_resize"
+        android:title="Choose Size"
+        android:contentDescription="Choose Size"
+        app:showAsAction="never"/>
 </menu>
