@@ -2,6 +2,7 @@ package com.jomartinez.memorymatchinggame
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.jinatonic.confetti.CommonConfetti
 import com.google.android.material.snackbar.Snackbar
 import com.jomartinez.memorymatchinggame.models.BoardSize
 import com.jomartinez.memorymatchinggame.models.MemoryGame
@@ -162,6 +164,9 @@ class MainActivity : AppCompatActivity() {
         if (memoryGame.flipCard(position) ){
             tvNumberPairs.text = "Pairs: ${memoryGame.numberPairsFound} / ${boardSize.getNumberPairs()}"
             if (memoryGame.haveWonGame()) {
+                CommonConfetti.rainingConfetti(
+                    clMain,
+                    intArrayOf(Color.BLUE, Color.GREEN, Color.YELLOW, Color.MAGENTA)).oneShot()
                 Snackbar.make(clMain, "You won! Congratulations!", Snackbar.LENGTH_LONG).show()
             }
         }
