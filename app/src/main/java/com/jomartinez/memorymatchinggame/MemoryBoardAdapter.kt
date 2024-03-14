@@ -60,13 +60,13 @@ class MemoryBoardAdapter(
                 if (memoryCard.isFacedUp){
                     memoryCard.identifier
                 } else {
-                    R.drawable.ic_launcher_background
+                    R.drawable.cat_icon
                 }
             )
 
             imageButton.alpha = if (memoryCard.isMatched) .4f else 1.0f
             val colorStateList = if (memoryCard.isMatched){
-                ContextCompat.getColorStateList(context, androidx.appcompat.R.color.material_grey_300)
+                ContextCompat.getColorStateList(context, com.google.android.material.R.color.material_grey_100)
             } else {
                 null
             }

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvNumberPairs: TextView
 
     private lateinit var memoryGame: MemoryGame
-    private var boardSize: BoardSize = BoardSize.MEDIUM
+    private var boardSize: BoardSize = BoardSize.EASY
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
